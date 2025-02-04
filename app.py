@@ -7,4 +7,4 @@ import numpy as np
 
 
 # these are stateful variables which are preserved as Streamlit reruns this script
-st.header("Comparing Data Among Multiple Vehicles", divider="gray")
+st.header("Comparing Data Among Multiple Vehicles")
