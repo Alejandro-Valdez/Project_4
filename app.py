@@ -48,7 +48,7 @@ fig_sc.update_layout(legend_title_text = "Brand") # Updates the histogram legend
 fig_sc.update_xaxes(title_text=" Price") # Updates the X Axis to be titled "Days Since Listed"
 fig_sc.update_yaxes(title_text=" Odomoter") # Updates the Y axis to be title "Amount"
 if check:
-    fig.add_trace(
+    fig_sc.add_trace(
     go.Scatter(
         x=[0, 200000],
         y=[0, 100000000],
