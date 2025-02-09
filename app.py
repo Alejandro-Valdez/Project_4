@@ -10,7 +10,8 @@ import numpy as np
 st.header("Comparing Data Among Multiple Vehicles")
 
 vehicles_dt = pd.read_csv('./data/vehicles_us.csv') #assigns the vehicle dataset from Noteboooks to value 'vehicles_dt'
-
+vehicles_dt['brand'] = vehicles_dt['model'].str.split().str[0]
+vehicles_dt.head()
 st.write(vehicles_dt.head()) #displays the first five lines of the 'vehicles_dt' dataframe
 # Making a histogram showing the information of how the transmission type of the vehicle 'corelates' to the days listed possibly showing what type of transmission is more or least desireable 
 
