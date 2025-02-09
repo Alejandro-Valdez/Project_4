@@ -32,3 +32,6 @@ fig.update_layout(legend_title_text = "Transmission Type") # Updates the histogr
 fig.update_xaxes(title_text="Days Since Listed") # Updates the X Axis to be titled "Days Since Listed"
 fig.update_yaxes(title_text="Amount") # Updates the Y axis to be title "Amount"
 st.write(fig) # Displays the Chart
+
+check = st.checkbox('Toggle line for graph')
+st.write('State of the check box:', check)
