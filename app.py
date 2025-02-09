@@ -3,7 +3,7 @@ import streamlit as st
 import time
 import plotly.express as px
 import plotly.graph_objects as go
-import numpy as np
+import numpy as np #importing necessary modules
 
 
 # these are stateful variables which are preserved as Streamlit reruns this script
@@ -38,24 +38,26 @@ fig.update_xaxes(title_text="Days Since Listed") # Updates the X Axis to be titl
 fig.update_yaxes(title_text="Amount") # Updates the Y axis to be title "Amount"
 st.write(fig) # Displays the Chart
 
-st.title('Cars Price in Comparison to its Odometer Reading by Brand')
-check = st.checkbox('Toggle line for graph')
-st.write('State of the check box:', check)
+st.title('Cars Price in Comparison to its Odometer Reading by Brand') # Creating a title to convey purpose of graph
 
+check = st.checkbox('Toggle line for graph') # Creating checkbox to toggle trendline in 'Price VS Odometer' graph
+
+# Creating the scatter plot graph showing the price of a car VS the odometer
 fig_sc = px.scatter(vehicles_dt, x="price", y="odometer", color="brand",
-                  hover_data=['cylinders'])
+                  hover_data=['cylinders']) #sets scatter plot base including x and y axis as well as toggleble legend indicators and what column the legend titles will come from
 fig_sc.update_layout(legend_title_text = "Brand") # Updates the histogram legend to be titled 'Transmission Type'
 fig_sc.update_xaxes(title_text=" Price") # Updates the X Axis to be titled "Days Since Listed"
 fig_sc.update_yaxes(title_text=" Odomoter") # Updates the Y axis to be title "Amount"
+#Creating if statement checking for whether the checbox has been checked to display trendline
 if check:
-    fig_sc.add_trace(
+    fig_sc.add_trace( #adding traceline
     go.Scatter(
-        x=[0, 200000],
-        y=[0, 1000000],
+        x=[0, 200000], #setting parameters for the x axis
+        y=[0, 1000000], # setting the parameters for the y axis
         mode="lines",
-        line=go.scatter.Line(color="red"),
-        showlegend=False)
+        line=go.scatter.Line(color="red"), 
+        showlegend=False) # setting the color of the line
 )
 
-st.write(fig_sc)
+st.write(fig_sc) #displaying scatter plot graph (version depending on whether checkbox paramter has been met
 
