@@ -8,7 +8,7 @@ import numpy as np
 
 # these are stateful variables which are preserved as Streamlit reruns this script
 st.header("Comparing Data Among Multiple Vehicles")
-vehicles_dt = pd.read_csv('/data/vehicles_us.csv') #assigns the vehicle dataset from Noteboooks to value 'vehicles_dt'
+vehicles_dt = pd.read_csv('./data/vehicles_us.csv') #assigns the vehicle dataset from Noteboooks to value 'vehicles_dt'
 st.write(vehicles_dt.head())
 # Making a histogram showing the information of how the transmission type of the vehicle 'corelates' to the days listed possibly showing what type of transmission is more or least desireable 
 
