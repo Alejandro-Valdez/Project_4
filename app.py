@@ -11,7 +11,7 @@ st.header("Comparing Data Among Multiple Vehicles")
 
 vehicles_dt = pd.read_csv('./data/vehicles_us.csv') #assigns the vehicle dataset from Noteboooks to value 'vehicles_dt'
 vehicles_dt['brand'] = vehicles_dt['model'].str.split().str[0]
-vehicles_dt.head()
+vehicles_dt.head()git 
 st.write(vehicles_dt.head()) #displays the first five lines of the 'vehicles_dt' dataframe
 # Making a histogram showing the information of how the transmission type of the vehicle 'corelates' to the days listed possibly showing what type of transmission is more or least desireable 
 
@@ -47,7 +47,15 @@ fig_sc = px.scatter(vehicles_dt, x="price", y="odometer", color="brand",
 fig_sc.update_layout(legend_title_text = "Brand") # Updates the histogram legend to be titled 'Transmission Type'
 fig_sc.update_xaxes(title_text=" Price") # Updates the X Axis to be titled "Days Since Listed"
 fig_sc.update_yaxes(title_text=" Odomoter") # Updates the Y axis to be title "Amount"
-
+if check:
+    fig.add_trace(
+    go.Scatter(
+        x=[0, 200000],
+        y=[0, 100000000],
+        mode="lines",
+        line=go.scatter.Line(color="gray"),
+        showlegend=False)
+)
 
 st.write(fig_sc)
 
