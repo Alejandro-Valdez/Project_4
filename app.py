@@ -51,9 +51,9 @@ if check:
     fig_sc.add_trace(
     go.Scatter(
         x=[0, 200000],
-        y=[0, 100000000],
+        y=[0, 1000000],
         mode="lines",
-        line=go.scatter.Line(color="gray"),
+        line=go.scatter.Line(color="red"),
         showlegend=False)
 )
 
