@@ -5,13 +5,37 @@ import plotly.express as px
 import plotly.graph_objects as go
 import numpy as np #importing necessary modules
 
-
 # these are stateful variables which are preserved as Streamlit reruns this script
-st.header("Comparing Data Among Multiple Vehicles")
-
 vehicles_dt = pd.read_csv('./data/vehicles_us.csv') #assigns the vehicle dataset from Noteboooks to value 'vehicles_dt'
 vehicles_dt['brand'] = vehicles_dt['model'].str.split().str[0]
-vehicles_dt.head()
+
+# It builds a new Series with the median year for every record, based on the model.
+median_year = vehicles_dt.groupby('model')['model_year'].median()
+# This is to get a dimension-compatible Series for the next line with fillna.
+median_year_all_records = vehicles_dt["model"].map(median_year)
+# It fills in only those model_year values that are missing, therefore it takes values 
+# from median_year_all_records only for them
+vehicles_dt["model_year"] = vehicles_dt["model_year"].fillna(median_year_all_records)
+
+# It builds a new Series with the median year for every record, based on the model.
+median_odomoter = vehicles_dt.groupby('model')['odometer'].median()
+# This is to get a dimension-compatible Series for the next line with fillna.
+median_odomoter_all_records = vehicles_dt["model"].map(median_odomoter)
+# It fills in only those model_year values that are missing, therefore it takes values 
+# from median_odomoter_all_records only for them
+vehicles_dt["odometer"] = vehicles_dt["model_year"].fillna(median_odomoter_all_records)
+# It builds a new Series with the median year for every record, based on the model.
+median_year = vehicles_dt.groupby('model')['model_year'].median()
+# This is to get a dimension-compatible Series for the next line with fillna.
+median_year_all_records = vehicles_dt["model"].map(median_year)
+
+# It fills in only those model_year values that are missing, therefore it takes values 
+# from median_year_all_records only for them
+vehicles_dt["cylinders"] = vehicles_dt["model_year"].fillna(median_year_all_records)
+
+#starts what is being displayed on the websitr
+st.header("Comparing Data Among Multiple Vehicles") #header for the website being built and displays text
+
 st.write(vehicles_dt.head()) #displays the first five lines of the 'vehicles_dt' dataframe
 # Making a histogram showing the information of how the transmission type of the vehicle 'corelates' to the days listed possibly showing what type of transmission is more or least desireable 
 
